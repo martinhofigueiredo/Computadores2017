@@ -62,6 +62,7 @@ long paletteShift;
 
 //send data via I2C to a client
 static byte BlinkM_sendBuffer(byte addr, byte col, byte* disp_data) {
+  Serial.print("Vou Mandar cenas");
   Wire.beginTransmission(addr);
   Wire.write(START_OF_DATA);
   Wire.write(col);
@@ -101,12 +102,6 @@ void display(byte x, byte y, byte r, byte g, byte b) {
   display_byte[1][p] = g;
   display_byte[2][p] = b;
 }
-
-
-
-
-
-
 
 //plasma convert
 //Converts an HSV color to RGB color
@@ -201,6 +196,7 @@ void plasma_morph()
 
 void setup()
 {
+
   Wire.begin(); // join i2c bus (address optional for master)
   plasma_setup();   //plasma setup
 }
